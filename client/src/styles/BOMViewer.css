@@ -1,0 +1,523 @@
+/* Enhanced styles for large BOM data */
+.model-info {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid #1976d2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.model-info h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.model-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.bom-tree {
+  height: calc(100vh - 240px); /* Adjust based on your header heights */
+  overflow-y: auto;
+  /* Enable hardware acceleration for smooth scrolling with 2000+ items */
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+}
+
+.bom-item {
+  /* Optimize rendering for large lists */
+  contain: layout;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bom-item:hover {
+  background-color: #f5f5f5 !important;
+}
+
+.bom-item.selected {
+  background-color: #e3f2fd !important;
+  border-left-color: #1976d2 !important;
+  box-shadow: inset 3px 0 0 #1976d2;
+}
+
+.bom-item.assembly {
+  background-color: #fafafa;
+}
+
+.bom-item.part {
+  background-color: white;
+}
+
+.bom-controls {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Virtualization hint for browsers */
+.bom-tree-view {
+  contain: strict;
+}
+
+/* Full screen 3D viewer layout */
+.interactive-viewer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.model-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.model-info h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.model-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.viewer-panel-fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Floating controls overlay */
+.viewer-controls-overlay {
+  position: absolute;
+  top: 70px;  /* Below model info */
+  left: 1rem;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.viewer-controls-overlay button {
+  padding: 0.5rem 1rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.viewer-controls-overlay button:hover {
+  background: #1565c0;
+}
+
+/* Floating BOM panel */
+.bom-panel-floating {
+  position: absolute;
+  top: 70px;  /* Below model info */
+  right: 1rem;
+  bottom: 1rem;
+  width: 350px;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 140px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .bom-panel-floating {
+    width: 300px;
+    right: 0.5rem;
+  }
+  
+  .model-info {
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .model-info h2 {
+    font-size: 0.9rem;
+  }
+  
+  .model-stats {
+    font-size: 0.7rem;
+    gap: 0.5rem;
+  }
+}
+
+/* Hide scrollbars but keep functionality */
+.bom-tree {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.bom-tree::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bom-tree::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bom-tree::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+/* Base mobile-first responsive design */
+.interactive-viewer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.model-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.model-info-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.model-info h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.model-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.mobile-bom-toggle {
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-notice {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #ffeaa7;
+}
+
+.viewer-panel-fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Desktop Controls */
+.viewer-controls-overlay {
+  position: absolute;
+  top: 80px;
+  left: 1rem;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: 250px;
+}
+
+.viewer-controls-overlay button {
+  padding: 0.5rem 1rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.viewer-controls-overlay button:hover {
+  background: #1565c0;
+}
+
+.selected-part-info {
+  font-size: 0.8rem;
+  color: #333;
+  background: #e3f2fd;
+  padding: 0.5rem;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+.model-notice {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* Mobile Controls */
+.mobile-controls {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.mobile-btn {
+  padding: 0.5rem 1rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.mobile-selected-info {
+  flex: 1;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Desktop BOM Panel */
+.bom-panel.floating {
+  position: absolute;
+  top: 80px;
+  right: 1rem;
+  bottom: 1rem;
+  width: 350px;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 160px);
+}
+
+/* Mobile BOM Panel */
+.bom-panel.mobile {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60vh;
+  z-index: 300;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bom-mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  background: rgba(25, 118, 210, 0.05);
+}
+
+.bom-mobile-header h3 {
+  margin: 0;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.bom-mobile-header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0.25rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .interactive-viewer.desktop .viewer-controls-overlay {
+    display: none;
+  }
+  
+  .interactive-viewer.mobile .mobile-controls {
+    display: flex;
+  }
+  
+  .model-info {
+    padding: 0.4rem 0.75rem;
+  }
+  
+  .model-info h2 {
+    font-size: 0.9rem;
+  }
+  
+  .model-stats {
+    font-size: 0.7rem;
+    gap: 0.5rem;
+  }
+  
+  .model-stats span {
+    white-space: nowrap;
+  }
+  
+  .bom-panel.floating {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .interactive-viewer.mobile .mobile-controls {
+    display: none;
+  }
+  
+  .interactive-viewer.desktop .viewer-controls-overlay {
+    display: flex;
+  }
+  
+  .bom-panel.mobile {
+    display: none;
+  }
+  
+  .mobile-bom-toggle {
+    display: none;
+  }
+}
+
+/* Loading and error states */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1976d2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  color: #d32f2f;
+}
+
+.error-container h3 {
+  margin: 0 0 1rem 0;
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-btn, .mobile-bom-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

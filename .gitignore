@@ -1,0 +1,9 @@
+/.glb
+# Ignore all .glb files
+*.glb 
+*.step
+*.stp
+*.iges
+*.json
+*.wrl
+*.vrml  
